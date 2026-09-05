@@ -1,0 +1,65 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: gluetun
+    restart: unless-stopped
+
+    cap_add:
+      - NET_ADMIN
+
+    devices:
+      - /dev/net/tun:/dev/net/tun
+
+    environment:
+      - TZ=America/New_York
+
+      # Use the exact Proton WireGuard configuration
+      - VPN_SERVICE_PROVIDER=custom
+      - VPN_TYPE=wireguard
+
+      # Proton WireGuard credentials
+      - WIREGUARD_PRIVATE_KEY=${PROTON_WIREGUARD_PRIVATE_KEY}
+      - WIREGUARD_PUBLIC_KEY=${PROTON_WIREGUARD_PUBLIC_KEY}
+      - WIREGUARD_ADDRESSES=10.2.0.2/32
+
+      # Proton US-NY#511
+      - WIREGUARD_ENDPOINT_IP=146.70.202.130
+      - WIREGUARD_ENDPOINT_PORT=51820
+
+      # Proton port forwarding
+      - VPN_PORT_FORWARDING=on
+      - VPN_PORT_FORWARDING_PROVIDER=protonvpn
+
+      # Automatically update qBittorrent when Proton assigns a port
+      - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -qO- --post-data "json={\"listen_port\":{{PORT}},\"random_port\":false,\"upnp\":false}" http://127.0.0.1:8080/api/v2/app/setPreferences'
+
+      # Reset qBittorrent's listening port when the VPN disconnects
+      - VPN_PORT_FORWARDING_DOWN_COMMAND=/bin/sh -c 'wget -O- -nv --retry-connrefused --post-data "json={\"listen_port\":0,\"current_network_interface\":\"lo\"}" http://127.0.0.1:8080/api/v2/app/setPreferences'
+
+    ports:
+      # qBittorrent Web UI
+      - "8080:8080"
+
+    volumes:
+      - ./config/gluetun:/gluetun
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    restart: unless-stopped
+
+    network_mode: "service:gluetun"
+
+    depends_on:
+      - gluetun
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - WEBUI_PORT=8080
+
+    volumes:
+      - ./config/qbittorrent:/config
+      - /mnt/media:/media
+
