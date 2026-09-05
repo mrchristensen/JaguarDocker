@@ -6,3 +6,7 @@ caramel-neighborhood-server/data/
 
 # qBittorrent
 qbittorrent/config/
+
+# Nginx
+nginx/certbot/www/*
+nginx/certbot/conf/*
