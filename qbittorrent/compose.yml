@@ -40,6 +40,9 @@ services:
       # qBittorrent Web UI
       - "8080:8080"
 
+      # Speedtest Tracker Web UI
+      - "8085:80"
+
     volumes:
       - ./config/gluetun:/gluetun
 
@@ -63,3 +66,20 @@ services:
       - ./config/qbittorrent:/config
       - /mnt/media:/media
 
+  speedtest-tracker:
+    image: lscr.io/linuxserver/speedtest-tracker:latest
+    container_name: speedtest-tracker
+    network_mode: "service:gluetun"
+    depends_on:
+      - gluetun
+    environment:
+      - PUID=65534
+      - PGID=65534
+      - TZ=America/New_York
+      # Run a speed test every 6 hours
+      - SPEEDTEST_SCHEDULE=0 */6 * * *
+      - DB_CONNECTION=sqlite
+      - APP_KEY=${SPEEDTEST_APP_KEY}
+    volumes:
+      - /opt/speedtest-tracker/config:/config
+    restart: unless-stopped
