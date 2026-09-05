@@ -1,7 +1,10 @@
+# qBittorrent
+
 ## .env
 | Variable | Explanation |
-| PROTON_WIREGUARD_PRIVATE_KEY=... | |
-| PROTON_WIREGUARD_PUBLIC_KEY=... | |
+| --- | --- |
+| PROTON_WIREGUARD_PRIVATE_KEY=... | ...|
+| PROTON_WIREGUARD_PUBLIC_KEY=... | ... |
 | SPEEDTEST_APP_KEY=... | generated from `echo -n 'base64:'; openssl rand -base64 32` |
 
 ## Speedtest Tracker
