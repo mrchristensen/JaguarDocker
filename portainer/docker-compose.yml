@@ -2,7 +2,7 @@ services:
   portainer:
     image: portainer/portainer-ce:sts
     container_name: portainer
-    restart: always
+    restart: unless-stopped
 
     environment:
       TZ: America/New_York
