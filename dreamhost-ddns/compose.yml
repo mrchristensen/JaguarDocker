@@ -1,0 +1,29 @@
+services:
+  dreamhost-ddns:
+    image: alpine:latest
+    container_name: dreamhost-ddns
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    volumes:
+      - ./update-dns.sh:/usr/local/bin/update-dns.sh:rio
+
+    environment:
+      TZ: America/New_York
+
+    command:
+      - /bin/sh
+      - -c
+      - |
+        apk add --no-cache curl jq
+
+        echo "DreamHost DDNS starting..."
+        echo "Record: $${DREAMHOST_RECORD}"
+        echo "Check interval: $${CHECK_INTERVAL} seconds"
+
+        while true; do
+          /usr/local/bin/update-dns.sh || true
+          sleep "$${CHECK_INTERVAL}"
+        done
