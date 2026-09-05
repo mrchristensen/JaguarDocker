@@ -1,0 +1,23 @@
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker:latest
+    restart: unless-stopped
+    network_mode: host
+
+
+    # Hardware Transcoding (Intel Quick Sync)
+    devices:
+      - /dev/dri:/dev/dri
+
+    environment:
+      TZ: America/New_York
+      PLEX_CLAIM: ${PLEX_CLAIM}
+      # PLEX_CLAIM: claim-XiEKLcHRLps5xTybg3GD
+
+    volumes:
+      - /opt/plex/config:/config
+      - /opt/plex/transcode:/transcode
+
+      # Media drive
+      - /mnt/media:/data
