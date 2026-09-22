@@ -37,11 +37,9 @@ services:
         clumps?
         mods-command?
         adventure-platform-mod?
-        bmarker?
-        silk?
-        fabric-language-kotlin?
         peek?
         unplugged-afk?
+        cape-command?
       MODRINTH_ALLOWED_VERSION_TYPE: "alpha"
       VANILLATWEAKS_SHARECODE: "cVO185"
       OPS: |-
