@@ -1,5 +1,7 @@
 # Caramel Neighborhood Server
 
+![Caramel Neighborhood Logo](caramel-neighborhood-logo.jpeg)
+
 Seed: 2817020000444282971 (https://www.chunkbase.com/apps/seed-map#seed=2817020000444282971)
 
 Server Jar: https://fabricmc.net/use/server/
