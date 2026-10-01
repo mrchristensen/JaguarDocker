@@ -13,10 +13,10 @@ services:
     environment:
       EULA: "TRUE"
       TYPE: "FABRIC"
-      VERSION: "26.2"
+      VERSION: "26.3"
       #MEMORY: "4096M"  # 4 gb
       MEMORY: "12288M"  # 12gb
-      MOTD: "Get your snacks"
+      MOTD: "Grab yo snacks"
       USE_MEOWICE_FLAGS: "true"
       TZ: "America/New_York"
       DIFFICULTY: "3"
@@ -36,12 +36,13 @@ services:
         krypton?
         clumps?
         mods-command?
+        cloud-minecraft-modded?
         adventure-platform-mod?
         peek?
         unplugged-afk?
         cape-command?
       MODRINTH_ALLOWED_VERSION_TYPE: "alpha"
-      VANILLATWEAKS_SHARECODE: "cVO185"
+      VANILLATWEAKS_SHARECODE: "eE6gsj"
       OPS: |-
         rush_rage
       ENABLE_WHITELIST: "true"
