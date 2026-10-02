@@ -29,6 +29,7 @@ Server Jar: https://fabricmc.net/use/server/
 - https://modrinth.com/mod/bluemap-offline-player-markers-(fabric)/versions?l=fabric/versions?l=fabric)
 - https://modrinth.com/mod/mods-command/versions?l=fabric
     - https://modrinth.com/mod/adventure-platform-mod/versions?l=fabric
+    - https://modrinth.com/mod/cloud-minecraft-modded/versions?l=fabric
 - https://modrinth.com/mod/peek/versions?l=fabric
 - https://modrinth.com/mod/unplugged-afk/versions?l=fabric
 - https://modrinth.com/mod/cape-command/versions?l=fabric
