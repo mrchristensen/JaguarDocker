@@ -32,7 +32,7 @@ services:
         armor-poser?
         view-distance-fix?
         bluemap?
-        bluemap-offline-player-markers-(fabric)?
+        bluemap-offline-player-markers-fabric?
         krypton?
         clumps?
         mods-command?

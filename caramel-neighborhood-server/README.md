@@ -26,7 +26,7 @@ Server Jar: https://fabricmc.net/use/server/
     - Installation Guide: https://bluemap.bluecolored.de/wiki/getting-started/Installation.html#installing-bluemap-basic-setup
 - https://modrinth.com/mod/shulkerboxtooltip/versions?l=fabric
 - https://modrinth.com/mod/clumps/versions?l=fabric
-- https://modrinth.com/mod/bluemap-offline-player-markers-(fabric)/versions?l=fabric/versions?l=fabric)
+- https://modrinth.com/mod/bluemap-offline-player-markers-fabric/versions?l=fabric
 - https://modrinth.com/mod/mods-command/versions?l=fabric
     - https://modrinth.com/mod/adventure-platform-mod/versions?l=fabric
     - https://modrinth.com/mod/cloud-minecraft-modded/versions?l=fabric
